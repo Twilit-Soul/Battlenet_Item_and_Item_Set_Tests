@@ -5,7 +5,7 @@ class Main {
     /*
         I feel that I ran a risk of over-engineering this, so I just want to state that I'm aware of that.
 
-        I really just want to put the disclaimer here saying that I understand team standards are holy, and I'd
+        I also really want to put the disclaimer here saying that I understand team standards are holy, and I'd
         test this on-the-job however the team likes and agrees upon.
 
         ~~
