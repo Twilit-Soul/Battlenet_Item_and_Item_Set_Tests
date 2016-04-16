@@ -159,10 +159,18 @@ public class APIAdapterTest {
     }
 
     @Test
-    public void testJsonp() throws IOException {
+    public void testItemJsonp() throws IOException {
         final String TEST_WORD = "testWord";
         String original = new APIAdapter().getWoWItemJson(DEFAULT_ITEM_ID, APILanguage.ENGLISH);
         String withJsonp = new APIAdapter().getWoWItemJsonp(DEFAULT_ITEM_ID, APILanguage.ENGLISH, TEST_WORD);
+        assertEquals(TEST_WORD+"();", withJsonp.replace(original, ""));
+    }
+
+    @Test
+    public void testItemSetJsonp() throws IOException {
+        final String TEST_WORD = "testWord";
+        String original = new APIAdapter().getWoWItemSetJson(DEFAULT_ITEM_SET_ID, APILanguage.ENGLISH);
+        String withJsonp = new APIAdapter().getWoWItemSetJsonp(DEFAULT_ITEM_SET_ID, APILanguage.ENGLISH, TEST_WORD);
         assertEquals(TEST_WORD+"();", withJsonp.replace(original, ""));
     }
 
