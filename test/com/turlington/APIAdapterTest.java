@@ -21,6 +21,12 @@ import java.util.stream.Collectors;
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertEquals;
 
+import static com.turlington.APIAdapter.API_KEY_START;
+import static com.turlington.APIAdapter.API_KEY;
+import static com.turlington.APIAdapter.LOCALE_START;
+import static com.turlington.APIAdapter.ITEM_API_START;
+import static com.turlington.APIAdapter.ITEM_SET_API_START;
+
 /**
  * Should probably test our connection to the API.
  * Created by Mitchell on 4/15/2016.
@@ -29,14 +35,24 @@ public class APIAdapterTest {
 
     private final int DEFAULT_ITEM_ID = 18803, DEFAULT_ITEM_SET_ID = 1060;
 
+    /*
+        I don't know if you will frown at me or smile at me for insisting on using my language enum and APIAdapter
+        constants.
+
+        On the one hand, if the api ever changes, we only change one place now. On the other, I actually find it a
+        little harder to read.
+     */
+
     @Test(expected=FileNotFoundException.class)
-    public void testCallURLBad() throws IOException {
-        new APIAdapter().callURL("https://us.api.battle.net/wow/item/0?locale=en_US&apikey=2gv8ep8at8cnk4ngcbrpzqydk96s8b5k");
+    public void testCallURLBadId() throws IOException {
+        APIAdapter adapter = new APIAdapter();
+        adapter.callURL(adapter.getWoWItemURL(0, APILanguage.ENGLISH, API_KEY));
     }
 
     @Test
-    public void testCallURL() throws IOException {
-        String results = new APIAdapter().callURL("https://us.api.battle.net/wow/item/76749?locale=en_US&apikey=2gv8ep8at8cnk4ngcbrpzqydk96s8b5k");
+    public void testCallURLSuccess() throws IOException {
+        APIAdapter adapter = new APIAdapter();
+        String results = adapter.callURL(adapter.getWoWItemURL(DEFAULT_ITEM_ID, APILanguage.ENGLISH, API_KEY));
         assertFalse(results.isEmpty());
     }
 
@@ -161,6 +177,51 @@ public class APIAdapterTest {
     }
 
     @Test
+    public void testBadLanguage() throws IOException {
+        APIAdapter adapter = new APIAdapter();
+        //Bad language input? English.
+        String badLanguage = adapter.callURL(ITEM_API_START+DEFAULT_ITEM_ID+LOCALE_START+
+                "no_NOPE"+API_KEY_START+API_KEY);
+        String correctLanguage = adapter.getWoWItemJson(DEFAULT_ITEM_ID, APILanguage.ENGLISH);
+        assertEquals(badLanguage, correctLanguage);
+    }
+
+    @Test
+    public void testMissingLanguage() throws IOException {
+        APIAdapter adapter = new APIAdapter();
+        //No language input? Also English.
+        String badLanguage = adapter.callURL(ITEM_API_START+DEFAULT_ITEM_ID+"?"+API_KEY_START+API_KEY);
+        String correctLanguage = adapter.getWoWItemJson(DEFAULT_ITEM_ID, APILanguage.ENGLISH);
+        assertEquals(badLanguage, correctLanguage);
+    }
+
+    @Test
+    public void testItemBadAPIKey() throws IOException {
+        APIAdapter adapter = new APIAdapter();
+        final String BAD_KEY = "afkHunter";
+        try {
+            adapter.callURL(adapter.getWoWItemURL(DEFAULT_ITEM_ID, APILanguage.ENGLISH, BAD_KEY));
+        } catch (IOException e) {
+            String expectedErrorMessage = "Server returned HTTP response code: 403 for URL: "+ITEM_API_START+
+                    DEFAULT_ITEM_ID+LOCALE_START+APILanguage.ENGLISH.getCode()+API_KEY_START+BAD_KEY;
+            assertEquals(expectedErrorMessage, e.getMessage());
+        }
+    }
+
+    @Test
+    public void testItemSetBadAPIKey() throws IOException {
+        APIAdapter adapter = new APIAdapter();
+        final String BAD_KEY = "afkHunter";
+        try {
+            adapter.callURL(adapter.getWoWItemSetURL(DEFAULT_ITEM_SET_ID, APILanguage.ENGLISH, BAD_KEY));
+        } catch (IOException e) {
+            String expectedErrorMessage = "Server returned HTTP response code: 403 for URL: "+ITEM_SET_API_START+
+                    DEFAULT_ITEM_SET_ID+LOCALE_START+APILanguage.ENGLISH.getCode()+API_KEY_START+BAD_KEY;
+            assertEquals(expectedErrorMessage, e.getMessage());
+        }
+    }
+
+    @Test
     public void testItemJsonp() throws IOException {
         final String TEST_WORD = "testWord";
         String original = new APIAdapter().getWoWItemJson(DEFAULT_ITEM_ID, APILanguage.ENGLISH);
@@ -174,6 +235,14 @@ public class APIAdapterTest {
         String original = new APIAdapter().getWoWItemSetJson(DEFAULT_ITEM_SET_ID, APILanguage.ENGLISH);
         String withJsonp = new APIAdapter().getWoWItemSetJsonp(DEFAULT_ITEM_SET_ID, TEST_WORD);
         assertEquals(TEST_WORD+"();", withJsonp.replace(original, ""));
+    }
+
+    @Test
+    public void testBadJsonp() throws IOException {
+        final String TEST_WORD = "#";
+        String original = new APIAdapter().getWoWItemSetJson(DEFAULT_ITEM_SET_ID, APILanguage.ENGLISH);
+        String withJsonp = new APIAdapter().getWoWItemSetJsonp(DEFAULT_ITEM_SET_ID, TEST_WORD);
+        assertEquals("({\"code\":403, \"type\":\"Forbidden\", \"detail\":\"Account Inactive\"})", withJsonp.replace(original, ""));
     }
 
     /**

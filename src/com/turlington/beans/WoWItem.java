@@ -212,10 +212,6 @@ public class WoWItem {
         return allowableClasses;
     }
 
-    void setId(int id) {
-        this.id = id;
-    }
-
     @SuppressWarnings("WeakerAccess")
     class BonusStats {
 
@@ -402,6 +398,7 @@ public class WoWItem {
 
         public class Spell {
             private int id;
+            private String name, icon, description, castTime;
 
             public int getId() {
                 return id;
@@ -422,8 +419,6 @@ public class WoWItem {
             public String getCastTime() {
                 return castTime;
             }
-
-            private String name, icon, description, castTime;
         }
     }
 
