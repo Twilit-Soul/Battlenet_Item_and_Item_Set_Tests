@@ -1,8 +1,8 @@
-package com.turlington;
+package com.turlington.beans;
 
+import com.turlington.APIAdapter;
 import org.junit.Test;
 import com.turlington.APIAdapter.APILanguage;
-import com.turlington.WoWItem.WoWItemSet;
 
 import java.util.Optional;
 

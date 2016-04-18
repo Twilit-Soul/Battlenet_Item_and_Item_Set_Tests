@@ -1,11 +1,11 @@
-package com.turlington;
+package com.turlington.beans;
 
+import com.turlington.APIAdapter;
 import org.junit.Test;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import com.turlington.WoWItem.WoWItemSet;
 
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;

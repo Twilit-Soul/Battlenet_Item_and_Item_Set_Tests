@@ -1,13 +1,15 @@
 package com.turlington;
 
 import com.google.gson.Gson;
+import com.turlington.beans.WoWItem;
+import com.turlington.beans.WoWItemSet;
 import org.junit.Test;
 
 import com.turlington.APIAdapter.APILanguage;
-import com.turlington.WoWItem.ItemSpells;
-import com.turlington.WoWItem.WoWItemSet;
-import com.turlington.WoWItem.WoWItemSet.SetBonuses;
-import com.turlington.WoWItem.BonusSummary.BonusChances;
+import com.turlington.beans.WoWItem.ItemSpells;
+import com.turlington.beans.WoWItem.ItemSpells.Spell;
+import com.turlington.beans.WoWItemSet.SetBonuses;
+import com.turlington.beans.WoWItem.BonusSummary.BonusChances;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -162,7 +164,7 @@ public class APIAdapterTest {
     public void testItemJsonp() throws IOException {
         final String TEST_WORD = "testWord";
         String original = new APIAdapter().getWoWItemJson(DEFAULT_ITEM_ID, APILanguage.ENGLISH);
-        String withJsonp = new APIAdapter().getWoWItemJsonp(DEFAULT_ITEM_ID, APILanguage.ENGLISH, TEST_WORD);
+        String withJsonp = new APIAdapter().getWoWItemJsonp(DEFAULT_ITEM_ID, TEST_WORD);
         assertEquals(TEST_WORD+"();", withJsonp.replace(original, ""));
     }
 
@@ -170,7 +172,7 @@ public class APIAdapterTest {
     public void testItemSetJsonp() throws IOException {
         final String TEST_WORD = "testWord";
         String original = new APIAdapter().getWoWItemSetJson(DEFAULT_ITEM_SET_ID, APILanguage.ENGLISH);
-        String withJsonp = new APIAdapter().getWoWItemSetJsonp(DEFAULT_ITEM_SET_ID, APILanguage.ENGLISH, TEST_WORD);
+        String withJsonp = new APIAdapter().getWoWItemSetJsonp(DEFAULT_ITEM_SET_ID, TEST_WORD);
         assertEquals(TEST_WORD+"();", withJsonp.replace(original, ""));
     }
 
@@ -230,7 +232,7 @@ public class APIAdapterTest {
         private String removeLanguageFromItemJson(String json, WoWItem item) {
             json = removeWords(json, item.getName());
             for (ItemSpells itemSpells : item.getItemSpells()) {
-                WoWItem.ItemSpells.Spell spell = itemSpells.getSpell();
+                Spell spell = itemSpells.getSpell();
                 json = removeWords(json, spell.getName(), spell.getCastTime(), spell.getDescription());
             }
             for (BonusChances bonusChances : item.getBonusSummary().getBonusChances()) {

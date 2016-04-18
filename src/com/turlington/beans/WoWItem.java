@@ -1,4 +1,4 @@
-package com.turlington;
+package com.turlington.beans;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import java.util.List;
  * Created by Mitchell on 4/14/2016.
  */
 @SuppressWarnings("unused")
-class WoWItem {
+public class WoWItem {
     private int id, disenchantingSkillRank, stackable, itemBind, buyPrice, itemClass, itemSubClass, containerSlots,
             inventoryType, itemLevel, maxCount, maxDurability, minFactionId, minReputation, quality, sellPrice,
             requiredSkill, requiredLevel, requiredSkillRank, baseArmor, armor, displayInfoId;
@@ -29,6 +29,12 @@ class WoWItem {
 
         This also explains the incomplete code coverage report.
         All lines are actually tested at the time of this writing.
+
+        ~~
+
+        Not everyone is a fan of so many inner classes, but I felt it might be appropriate given that they are all
+        always a part of WoWItem. If these tests were to expand to the rest of the API, and found they could be
+        retrieved with their own API call, I would probably pull them out into the package level.
      */
 
     WoWItemSet getItemSet() {
@@ -134,7 +140,7 @@ class WoWItem {
         return description;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 
@@ -158,7 +164,7 @@ class WoWItem {
         return bonusStats;
     }
 
-    List<ItemSpells> getItemSpells() {
+    public List<ItemSpells> getItemSpells() {
         return itemSpells;
     }
 
@@ -198,12 +204,16 @@ class WoWItem {
         return availableContexts;
     }
 
-    BonusSummary getBonusSummary() {
+    public BonusSummary getBonusSummary() {
         return bonusSummary;
     }
 
     List<Integer> getAllowableClasses() {
         return allowableClasses;
+    }
+
+    void setId(int id) {
+        this.id = id;
     }
 
     @SuppressWarnings("WeakerAccess")
@@ -277,7 +287,7 @@ class WoWItem {
     }
 
     @SuppressWarnings("WeakerAccess")
-    class BonusSummary {
+    public class BonusSummary {
         private List<Integer> defaultBonusLists, chanceBonusLists;
         private List<BonusChances> bonusChances;
 
@@ -289,11 +299,11 @@ class WoWItem {
             return chanceBonusLists;
         }
 
-        List<BonusChances> getBonusChances() {
+        public List<BonusChances> getBonusChances() {
             return bonusChances;
         }
 
-        class BonusChances {
+        public class BonusChances {
             private String chanceType;
             private Upgrade upgrade;
             private List<Stats> stats;
@@ -303,7 +313,7 @@ class WoWItem {
                 return chanceType;
             }
 
-            Upgrade getUpgrade() {
+            public Upgrade getUpgrade() {
                 return upgrade;
             }
 
@@ -315,7 +325,7 @@ class WoWItem {
                 return sockets;
             }
 
-            class Upgrade {
+            public class Upgrade {
                 private String upgradeType, name;
                 private int id;
 
@@ -323,7 +333,7 @@ class WoWItem {
                     return upgradeType;
                 }
 
-                String getName() {
+                public String getName() {
                     return name;
                 }
 
@@ -360,7 +370,7 @@ class WoWItem {
     }
 
     @SuppressWarnings("WeakerAccess")
-    class ItemSpells {
+    public class ItemSpells {
         private int spellId, nCharges, categoryId;
         private boolean consumable;
         private String trigger;
@@ -386,30 +396,30 @@ class WoWItem {
             return trigger;
         }
 
-        Spell getSpell() {
+        public Spell getSpell() {
             return spell;
         }
 
-        class Spell {
+        public class Spell {
             private int id;
 
-            int getId() {
+            public int getId() {
                 return id;
             }
 
-            String getName() {
+            public String getName() {
                 return name;
             }
 
-            String getIcon() {
+            public String getIcon() {
                 return icon;
             }
 
-            String getDescription() {
+            public String getDescription() {
                 return description;
             }
 
-            String getCastTime() {
+            public String getCastTime() {
                 return castTime;
             }
 
@@ -417,40 +427,4 @@ class WoWItem {
         }
     }
 
-    class WoWItemSet {
-        private int id;
-        private String name;
-        private List<SetBonuses> setBonuses;
-        private List<Integer> items;
-
-        int getId() {
-            return id;
-        }
-
-        String getName() {
-            return name;
-        }
-
-        List<SetBonuses> getSetBonuses() {
-            return setBonuses;
-        }
-
-        List<Integer> getItems() {
-            return items;
-        }
-
-        @SuppressWarnings("unused")
-        class SetBonuses {
-            private String description;
-            private int threshold;
-
-            String getDescription() {
-                return description;
-            }
-
-            int getThreshold() {
-                return threshold;
-            }
-        }
-    }
 }
