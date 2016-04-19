@@ -252,6 +252,10 @@ public class APIAdapterTest {
      * (Don't know how you guys feel about inner classes such as this)
      */
     private class JsonLanguageIndependenceTester {
+
+        /**
+         * Strips out anything language-related, and makes sure what's left between items is identical.
+         */
         private void testItemSetLanguageIndependence(int itemSetId, APIAdapter adapter, Gson gson) throws IOException {
             List<String> jsonStrings = new ArrayList<>(APILanguage.values().length);
             for (APILanguage language: APILanguage.values()) {
@@ -276,6 +280,9 @@ public class APIAdapterTest {
             different methods are called. Not sure of an easy way to generalize that.
          */
 
+        /**
+         * Strips out anything language-related, and makes sure what's left between items is identical.
+         */
         private void testItemLanguageIndependence(int itemId, APIAdapter adapter, Gson gson) throws IOException {
             List<String> jsonStrings = new ArrayList<>(APILanguage.values().length);
             for (APILanguage language: APILanguage.values()) {
@@ -312,6 +319,9 @@ public class APIAdapterTest {
             return json;
         }
 
+        /**
+         * Removes any language-specific text from a json string for a WoW item set.
+         */
         private String removeLanguageFromItemSetJson(String json, WoWItemSet itemSet) {
             json = removeWords(json, itemSet.getName());
             for (SetBonuses setBonuses : itemSet.getSetBonuses()) {
