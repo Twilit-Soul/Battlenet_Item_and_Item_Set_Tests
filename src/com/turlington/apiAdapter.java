@@ -1,9 +1,8 @@
 package com.turlington;
 
+import com.google.gson.Gson;
 import com.turlington.beans.WoWItem;
 import com.turlington.beans.WoWItemSet;
-
-import com.google.gson.Gson;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -81,7 +80,7 @@ public class APIAdapter {
         try {
             return Optional.of(gson.fromJson(getWoWItemSetJson(setId, language), WoWItemSet.class));
         } catch (Exception e) {
-            logger.error("Couldn't get WoWItemSet for id "+setId+": "+e.getMessage(), e);
+            logger.error("Couldn't get WoWItemSet for id " + setId + ": " + e.getMessage(), e);
             return Optional.empty();
         }
     }
@@ -90,7 +89,7 @@ public class APIAdapter {
         try {
             return Optional.of(gson.fromJson(getWoWItemJson(itemId, language), WoWItem.class));
         } catch (Exception e) {
-            logger.error("Couldn't get WoWItem for id "+itemId+": "+e.getMessage(), e);
+            logger.error("Couldn't get WoWItem for id " + itemId + ": " + e.getMessage(), e);
             return Optional.empty();
         }
     }
@@ -113,7 +112,7 @@ public class APIAdapter {
      * Uses id to try and retrieve an item set from the battle.net API. Can specify language.
      */
     String getWoWItemSetJson(int setId, APILanguage language) throws IOException {
-        String key = setId+language.getCode();
+        String key = setId + language.getCode();
         if (!cachedItemSetJsons.containsKey(key)) {
             String itemSetJson = callURL(getWoWItemSetURL(setId, language, API_KEY));
             cachedItemSetJsons.put(key, itemSetJson);
@@ -126,7 +125,7 @@ public class APIAdapter {
      * Uses id to try and retrieve an item from the battle.net API. Can specify language.
      */
     String getWoWItemJson(int itemId, APILanguage language) throws IOException {
-        String key = itemId+language.getCode();
+        String key = itemId + language.getCode();
         if (!cachedItemJsons.containsKey(key)) {
             String itemJson = callURL(getWoWItemURL(itemId, language, API_KEY));
             cachedItemJsons.put(key, itemJson);
@@ -182,7 +181,7 @@ public class APIAdapter {
      */
     private String getWoWItemURL(int itemId, APILanguage language, String key, String jsonp) {
         return ITEM_API_START + itemId + LOCALE_START + language.getCode() +
-                ((jsonp.isEmpty()) ? "" : JSONP_START + jsonp)+ API_KEY_START + key;
+                ((jsonp.isEmpty()) ? "" : JSONP_START + jsonp) + API_KEY_START + key;
     }
 
     /**
@@ -197,6 +196,6 @@ public class APIAdapter {
      */
     private String getWoWItemSetURL(int setId, APILanguage language, String key, String jsonp) {
         return ITEM_SET_API_START + setId + LOCALE_START + language.getCode() +
-                ((jsonp.isEmpty()) ? "" : JSONP_START + jsonp)+ API_KEY_START + key;
+                ((jsonp.isEmpty()) ? "" : JSONP_START + jsonp) + API_KEY_START + key;
     }
 }
