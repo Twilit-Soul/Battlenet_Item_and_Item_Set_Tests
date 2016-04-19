@@ -1,6 +1,7 @@
 package com.turlington;
 
-import com.turlington.WoWItem.WoWItemSet;
+import com.turlington.beans.WoWItem;
+import com.turlington.beans.WoWItemSet;
 
 import com.google.gson.Gson;
 import org.apache.logging.log4j.LogManager;
@@ -12,31 +13,36 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 /**
  * Way of accessing the api conveniently.
  * Created by Mitchell on 4/14/2016.
  */
-class APIAdapter {
+public class APIAdapter {
     private final Gson gson = new Gson(); //This thing is just...nifty, isn't it?
     private final Logger logger = LogManager.getLogger(APIAdapter.class);
-    private final String API_KEY = "2gv8ep8at8cnk4ngcbrpzqydk96s8b5k";
-    private final String ITEM_SET_API_START = "https://us.api.battle.net/wow/item/set/";
-    private final String ITEM_API_START = "https://us.api.battle.net/wow/item/";
-    private final String LOCALE_START = "?locale=";
-    private final String API_KEY_START = "&apikey=";
-    private final String JSONP_START = "&jsonp=";
+    static final String API_KEY = "2gv8ep8at8cnk4ngcbrpzqydk96s8b5k";
+    static final String ITEM_SET_API_START = "https://us.api.battle.net/wow/item/set/";
+    static final String ITEM_API_START = "https://us.api.battle.net/wow/item/";
+    static final String LOCALE_START = "?locale=";
+    static final String API_KEY_START = "&apikey=";
+    private static final String JSONP_START = "&jsonp=";
+
+    private static final Map<String, String> cachedItemJsons = new HashMap<>();
+    private static final Map<String, String> cachedItemSetJsons = new HashMap<>();
 
     /*
         I'm a fan of type safety.
     */
-    enum APILanguage {
+    public enum APILanguage {
         ENGLISH("en_US"),
         PORTUGUESE("pt_BR"),
         SPANISH("es_MX");
 
-        private String code;
+        private final String code;
 
         APILanguage(String code) {
             this.code = code;
@@ -71,7 +77,7 @@ class APIAdapter {
     /**
      * (If you want to specify the language.)
      */
-    Optional<WoWItemSet> getWoWItemSet(int setId, APILanguage language) {
+    public Optional<WoWItemSet> getWoWItemSet(int setId, APILanguage language) {
         try {
             return Optional.of(gson.fromJson(getWoWItemSetJson(setId, language), WoWItemSet.class));
         } catch (Exception e) {
@@ -80,14 +86,7 @@ class APIAdapter {
         }
     }
 
-    /**
-     * Uses id to try and retrieve a set from the battle.net API.
-     */
-    Optional<WoWItemSet> getWoWItemSet(int setId) {
-        return getWoWItemSet(setId, APILanguage.ENGLISH);
-    }
-
-    Optional<WoWItem> getWoWItem(int itemId, APILanguage language) {
+    public Optional<WoWItem> getWoWItem(int itemId, APILanguage language) {
         try {
             return Optional.of(gson.fromJson(getWoWItemJson(itemId, language), WoWItem.class));
         } catch (Exception e) {
@@ -97,26 +96,57 @@ class APIAdapter {
     }
 
     /**
+     * Uses id to try and retrieve an item set from the battle.net API.
+     */
+    public Optional<WoWItemSet> getWoWItemSet(int setId) {
+        return getWoWItemSet(setId, APILanguage.ENGLISH);
+    }
+
+    /**
      * Uses id to try and retrieve an item from the battle.net API.
      */
-    Optional<WoWItem> getWoWItem(int itemId) {
+    public Optional<WoWItem> getWoWItem(int itemId) {
         return getWoWItem(itemId, APILanguage.ENGLISH);
     }
 
+    /**
+     * Uses id to try and retrieve an item set from the battle.net API. Can specify language.
+     */
     String getWoWItemSetJson(int setId, APILanguage language) throws IOException {
-        return callURL(ITEM_SET_API_START + setId + LOCALE_START + language.getCode() + API_KEY_START + API_KEY);
+        String key = setId+language.getCode();
+        if (!cachedItemSetJsons.containsKey(key)) {
+            String itemSetJson = callURL(getWoWItemSetURL(setId, language, API_KEY));
+            cachedItemJsons.put(key, itemSetJson);
+            return itemSetJson;
+        }
+        return cachedItemSetJsons.get(key);
     }
 
+    /**
+     * Uses id to try and retrieve an item from the battle.net API. Can specify language.
+     */
     String getWoWItemJson(int itemId, APILanguage language) throws IOException {
-        return callURL(ITEM_API_START + itemId + LOCALE_START + language.getCode() + API_KEY_START + API_KEY);
+        String key = itemId+language.getCode();
+        if (!cachedItemJsons.containsKey(key)) {
+            String itemJson = callURL(getWoWItemURL(itemId, language, API_KEY));
+            cachedItemJsons.put(key, itemJson);
+            return itemJson;
+        }
+        return cachedItemJsons.get(key);
     }
 
-    String getWoWItemSetJsonp(int setId, APILanguage language, String jsonp) throws IOException {
-        return callURL(ITEM_SET_API_START + setId + LOCALE_START + language.getCode() + JSONP_START + jsonp + API_KEY_START + API_KEY);
+    /**
+     * Uses id to try and retrieve an item set from the battle.net API. Can specify language, and add jsonp.
+     */
+    String getWoWItemSetJsonp(int setId, String jsonp) throws IOException {
+        return callURL(getWoWItemSetURL(setId, APILanguage.ENGLISH, API_KEY, jsonp));
     }
 
-    String getWoWItemJsonp(int itemId, APILanguage language, String jsonp) throws IOException {
-        return callURL(ITEM_API_START + itemId + LOCALE_START + language.getCode() + JSONP_START + jsonp + API_KEY_START + API_KEY);
+    /**
+     * Uses id to try and retrieve an item from the battle.net API. Can specify language, and add jsonp.
+     */
+    String getWoWItemJsonp(int itemId, String jsonp) throws IOException {
+        return callURL(getWoWItemURL(itemId, APILanguage.ENGLISH, API_KEY, jsonp));
     }
 
     /**
@@ -127,8 +157,7 @@ class APIAdapter {
         StringBuilder sb = new StringBuilder();
         URLConnection urlConn = new URL(myURL).openConnection();
         try (InputStreamReader in = new InputStreamReader(urlConn.getInputStream(),
-                Charset.defaultCharset());
-             BufferedReader bufferedReader = new BufferedReader(in)) {
+                Charset.defaultCharset()); BufferedReader bufferedReader = new BufferedReader(in)) {
             urlConn.setReadTimeout(60 * 1000);
             if (urlConn.getInputStream() != null) {
                 int cp;
@@ -139,5 +168,23 @@ class APIAdapter {
         }
 
         return sb.toString();
+    }
+
+    String getWoWItemURL(int itemId, APILanguage language, String key) {
+        return getWoWItemURL(itemId, language, key, "");
+    }
+
+    private String getWoWItemURL(int itemId, APILanguage language, String key, String jsonp) {
+        return ITEM_API_START + itemId + LOCALE_START + language.getCode() +
+                ((jsonp.isEmpty()) ? "" : JSONP_START + jsonp)+ API_KEY_START + key;
+    }
+
+    String getWoWItemSetURL(int itemId, APILanguage language, String key) {
+        return getWoWItemSetURL(itemId, language, key, "");
+    }
+
+    private String getWoWItemSetURL(int setId, APILanguage language, String key, String jsonp) {
+        return ITEM_SET_API_START + setId + LOCALE_START + language.getCode() +
+                ((jsonp.isEmpty()) ? "" : JSONP_START + jsonp)+ API_KEY_START + key;
     }
 }
