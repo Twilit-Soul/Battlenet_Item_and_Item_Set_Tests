@@ -1,15 +1,14 @@
 package com.turlington;
 
 import com.google.gson.Gson;
+import com.turlington.APIAdapter.*;
 import com.turlington.beans.WoWItem;
-import com.turlington.beans.WoWItemSet;
-import org.junit.Test;
-
-import com.turlington.APIAdapter.APILanguage;
+import com.turlington.beans.WoWItem.BonusSummary.BonusChances;
 import com.turlington.beans.WoWItem.ItemSpells;
 import com.turlington.beans.WoWItem.ItemSpells.Spell;
+import com.turlington.beans.WoWItemSet;
 import com.turlington.beans.WoWItemSet.SetBonuses;
-import com.turlington.beans.WoWItem.BonusSummary.BonusChances;
+import org.junit.Test;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -18,14 +17,9 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import static com.turlington.APIAdapter.*;
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertEquals;
-
-import static com.turlington.APIAdapter.API_KEY_START;
-import static com.turlington.APIAdapter.API_KEY;
-import static com.turlington.APIAdapter.LOCALE_START;
-import static com.turlington.APIAdapter.ITEM_API_START;
-import static com.turlington.APIAdapter.ITEM_SET_API_START;
 
 /**
  * Should probably test our connection to the API.
@@ -43,7 +37,7 @@ public class APIAdapterTest {
         little harder to read.
      */
 
-    @Test(expected=FileNotFoundException.class)
+    @Test(expected = FileNotFoundException.class)
     public void testCallURLBadId() throws IOException {
         APIAdapter adapter = new APIAdapter();
         adapter.callURL(adapter.getWoWItemURL(0, APILanguage.ENGLISH, API_KEY));
@@ -56,12 +50,12 @@ public class APIAdapterTest {
         assertFalse(results.isEmpty());
     }
 
-    @Test(expected=FileNotFoundException.class)
+    @Test(expected = FileNotFoundException.class)
     public void testGetItemJsonNoExist() throws IOException {
         new APIAdapter().getWoWItemJson(0, APILanguage.ENGLISH);
     }
 
-    @Test(expected=FileNotFoundException.class)
+    @Test(expected = FileNotFoundException.class)
     public void testGetItemSetJsonNoExist() throws IOException {
         new APIAdapter().getWoWItemSetJson(0, APILanguage.ENGLISH);
     }
@@ -180,8 +174,8 @@ public class APIAdapterTest {
     public void testBadLanguage() throws IOException {
         APIAdapter adapter = new APIAdapter();
         //Bad language input? English.
-        String badLanguage = adapter.callURL(ITEM_API_START+DEFAULT_ITEM_ID+LOCALE_START+
-                "no_NOPE"+API_KEY_START+API_KEY);
+        String badLanguage = adapter.callURL(ITEM_API_START + DEFAULT_ITEM_ID + LOCALE_START +
+                "no_NOPE" + API_KEY_START + API_KEY);
         String correctLanguage = adapter.getWoWItemJson(DEFAULT_ITEM_ID, APILanguage.ENGLISH);
         assertEquals(badLanguage, correctLanguage);
     }
@@ -190,7 +184,7 @@ public class APIAdapterTest {
     public void testMissingLanguage() throws IOException {
         APIAdapter adapter = new APIAdapter();
         //No language input? Also English.
-        String badLanguage = adapter.callURL(ITEM_API_START+DEFAULT_ITEM_ID+"?"+API_KEY_START+API_KEY);
+        String badLanguage = adapter.callURL(ITEM_API_START + DEFAULT_ITEM_ID + "?" + API_KEY_START + API_KEY);
         String correctLanguage = adapter.getWoWItemJson(DEFAULT_ITEM_ID, APILanguage.ENGLISH);
         assertEquals(badLanguage, correctLanguage);
     }
@@ -202,8 +196,8 @@ public class APIAdapterTest {
         try {
             adapter.callURL(adapter.getWoWItemURL(DEFAULT_ITEM_ID, APILanguage.ENGLISH, BAD_KEY));
         } catch (IOException e) {
-            String expectedErrorMessage = "Server returned HTTP response code: 403 for URL: "+ITEM_API_START+
-                    DEFAULT_ITEM_ID+LOCALE_START+APILanguage.ENGLISH.getCode()+API_KEY_START+BAD_KEY;
+            String expectedErrorMessage = "Server returned HTTP response code: 403 for URL: " + ITEM_API_START +
+                    DEFAULT_ITEM_ID + LOCALE_START + APILanguage.ENGLISH.getCode() + API_KEY_START + BAD_KEY;
             assertEquals(expectedErrorMessage, e.getMessage());
         }
     }
@@ -215,8 +209,8 @@ public class APIAdapterTest {
         try {
             adapter.callURL(adapter.getWoWItemSetURL(DEFAULT_ITEM_SET_ID, APILanguage.ENGLISH, BAD_KEY));
         } catch (IOException e) {
-            String expectedErrorMessage = "Server returned HTTP response code: 403 for URL: "+ITEM_SET_API_START+
-                    DEFAULT_ITEM_SET_ID+LOCALE_START+APILanguage.ENGLISH.getCode()+API_KEY_START+BAD_KEY;
+            String expectedErrorMessage = "Server returned HTTP response code: 403 for URL: " + ITEM_SET_API_START +
+                    DEFAULT_ITEM_SET_ID + LOCALE_START + APILanguage.ENGLISH.getCode() + API_KEY_START + BAD_KEY;
             assertEquals(expectedErrorMessage, e.getMessage());
         }
     }
@@ -226,7 +220,7 @@ public class APIAdapterTest {
         final String TEST_WORD = "testWord";
         String original = new APIAdapter().getWoWItemJson(DEFAULT_ITEM_ID, APILanguage.ENGLISH);
         String withJsonp = new APIAdapter().getWoWItemJsonp(DEFAULT_ITEM_ID, TEST_WORD);
-        assertEquals(TEST_WORD+"();", withJsonp.replace(original, ""));
+        assertEquals(TEST_WORD + "();", withJsonp.replace(original, ""));
     }
 
     @Test
@@ -234,7 +228,7 @@ public class APIAdapterTest {
         final String TEST_WORD = "testWord";
         String original = new APIAdapter().getWoWItemSetJson(DEFAULT_ITEM_SET_ID, APILanguage.ENGLISH);
         String withJsonp = new APIAdapter().getWoWItemSetJsonp(DEFAULT_ITEM_SET_ID, TEST_WORD);
-        assertEquals(TEST_WORD+"();", withJsonp.replace(original, ""));
+        assertEquals(TEST_WORD + "();", withJsonp.replace(original, ""));
     }
 
     @Test
@@ -248,7 +242,7 @@ public class APIAdapterTest {
     /**
      * Exists to keep all of these methods isolated together. Not every test here would want them, but neither would
      * another class.
-     *
+     * <p>
      * (Don't know how you guys feel about inner classes such as this)
      */
     private class JsonLanguageIndependenceTester {
@@ -258,7 +252,7 @@ public class APIAdapterTest {
          */
         private void testItemSetLanguageIndependence(int itemSetId, APIAdapter adapter, Gson gson) throws IOException {
             List<String> jsonStrings = new ArrayList<>(APILanguage.values().length);
-            for (APILanguage language: APILanguage.values()) {
+            for (APILanguage language : APILanguage.values()) {
                 jsonStrings.add(adapter.getWoWItemSetJson(itemSetId, language));
             }
 
@@ -285,7 +279,7 @@ public class APIAdapterTest {
          */
         private void testItemLanguageIndependence(int itemId, APIAdapter adapter, Gson gson) throws IOException {
             List<String> jsonStrings = new ArrayList<>(APILanguage.values().length);
-            for (APILanguage language: APILanguage.values()) {
+            for (APILanguage language : APILanguage.values()) {
                 jsonStrings.add(adapter.getWoWItemJson(itemId, language));
             }
 

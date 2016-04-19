@@ -1,9 +1,8 @@
 package com.turlington.beans;
 
-import org.junit.Test;
-
 import com.turlington.APIAdapter;
 import com.turlington.APIAdapter.APILanguage;
+import org.junit.Test;
 
 import java.util.Optional;
 

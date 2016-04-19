@@ -214,9 +214,6 @@ public class WoWItem {
 
     @SuppressWarnings("WeakerAccess")
     class BonusStats {
-
-        private BonusStats() {}
-
         private int stat, amount;
 
         int getStat() {

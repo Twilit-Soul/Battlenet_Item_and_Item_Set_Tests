@@ -35,7 +35,7 @@ public class WoWItemSetAPITest {
                 itemSet.getSetBonuses().get(0).getDescription());
         assertEquals(2, itemSet.getSetBonuses().get(0).getThreshold());
         assertEquals("Your Rejuvenation and Regrowth spells have a 10% chance " +
-                "to Timeslip and have double the normal duration.",
+                        "to Timeslip and have double the normal duration.",
                 itemSet.getSetBonuses().get(1).getDescription());
         assertEquals(4, itemSet.getSetBonuses().get(1).getThreshold());
         int[] expected = {76749, 76750, 76751, 76752, 76753};
@@ -105,7 +105,7 @@ public class WoWItemSetAPITest {
         assertEquals("Reduce el costo de maná de Toque de sanación y Rejuvenecimiento un 5%.",
                 itemSet.getSetBonuses().get(0).getDescription());
         assertEquals("Tus hechizos Rejuvenecimiento y Recrecimiento tienen un 10% de probabilidad de realizar un " +
-                "Salto temporal y durar el doble de lo normal.",
+                        "Salto temporal y durar el doble de lo normal.",
                 itemSet.getSetBonuses().get(1).getDescription());
     }
 
