@@ -9,8 +9,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="com.google.code.gson:gson:2.6.2" level="project" />
-    <orderEntry type="library" name="javax.ws.rs:javax.ws.rs-api:2.0.1" level="project" />
-    <orderEntry type="library" name="org.glassfish.jersey.archetypes:jersey-quickstart-grizzly2:2.22.2" level="project" />
     <orderEntry type="module-library">
       <library name="JUnit4">
         <CLASSES>

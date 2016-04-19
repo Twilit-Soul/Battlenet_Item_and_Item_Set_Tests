@@ -170,19 +170,31 @@ public class APIAdapter {
         return sb.toString();
     }
 
+    /**
+     * Get url to hit the API with for a WoW item.
+     */
     String getWoWItemURL(int itemId, APILanguage language, String key) {
         return getWoWItemURL(itemId, language, key, "");
     }
 
+    /**
+     * Get url to hit the API with for a WoW item. Can include jsonp.
+     */
     private String getWoWItemURL(int itemId, APILanguage language, String key, String jsonp) {
         return ITEM_API_START + itemId + LOCALE_START + language.getCode() +
                 ((jsonp.isEmpty()) ? "" : JSONP_START + jsonp)+ API_KEY_START + key;
     }
 
+    /**
+     * Get url to hit the API with for a WoW item set.
+     */
     String getWoWItemSetURL(int itemId, APILanguage language, String key) {
         return getWoWItemSetURL(itemId, language, key, "");
     }
 
+    /**
+     * Get url to hit the API with for a WoW item set. Can include jsonp.
+     */
     private String getWoWItemSetURL(int setId, APILanguage language, String key, String jsonp) {
         return ITEM_SET_API_START + setId + LOCALE_START + language.getCode() +
                 ((jsonp.isEmpty()) ? "" : JSONP_START + jsonp)+ API_KEY_START + key;
