@@ -6,6 +6,7 @@ import java.util.List;
  * Representation of an item set in WoW.
  * Created by Mitchell on 4/17/2016.
  */
+@SuppressWarnings("unused")
 public class WoWItemSet {
     private int id;
     private String name;
@@ -28,7 +29,6 @@ public class WoWItemSet {
         return items;
     }
 
-    @SuppressWarnings("unused")
     public class SetBonuses {
         private String description;
         private int threshold;

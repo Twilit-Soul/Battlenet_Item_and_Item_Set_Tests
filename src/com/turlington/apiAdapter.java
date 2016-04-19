@@ -116,7 +116,7 @@ public class APIAdapter {
         String key = setId+language.getCode();
         if (!cachedItemSetJsons.containsKey(key)) {
             String itemSetJson = callURL(getWoWItemSetURL(setId, language, API_KEY));
-            cachedItemJsons.put(key, itemSetJson);
+            cachedItemSetJsons.put(key, itemSetJson);
             return itemSetJson;
         }
         return cachedItemSetJsons.get(key);
