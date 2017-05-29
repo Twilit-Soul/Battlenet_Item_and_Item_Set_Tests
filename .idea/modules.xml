@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Battlenet Item and Item Set Tests.iml" filepath="$PROJECT_DIR$/Battlenet Item and Item Set Tests.iml" />
+      <module fileurl="file://$PROJECT_DIR$/turlington-battlenet-tests.iml" filepath="$PROJECT_DIR$/turlington-battlenet-tests.iml" />
     </modules>
   </component>
 </project>
