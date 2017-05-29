@@ -60,7 +60,7 @@ class WoWItemAPITest {
         collector.assertEquals(2.9, item.weaponInfo.weaponSpeed, ACCEPTABLE_FUZZ)
         collector.assertEquals(35.0, item.weaponInfo.dps, ACCEPTABLE_FUZZ)
         collector.assertEquals(17, item.inventoryType)
-        collector.assertTrue(item.isEquippable)
+        collector.assertTrue(item.equippable)
         collector.assertEquals(70, item.itemLevel)
         collector.assertEquals(0, item.maxCount) //??? You're allowed 0 at most of these? Finkle does not share.
         collector.assertEquals(120, item.maxDurability)
@@ -80,7 +80,7 @@ class WoWItemAPITest {
         collector.assertEquals(31265, item.displayInfoId)
         collector.assertEquals("", item.nameDescription)
         collector.assertEquals("000000", item.nameDescriptionColor)
-        collector.assertTrue(item.isUpgradable)
+        collector.assertTrue(item.upgradable)
         collector.assertFalse(item.isHeroicTooltip)
         collector.assertEquals("", item.context)
         collector.assertEquals(0, item.bonusLists.size)
@@ -112,7 +112,7 @@ class WoWItemAPITest {
         //TODO: could replace numbers with regex match
         collector.assertEquals("Your ranged attacks have a chance to deal ^8.5370 fire damage over 2 sec.", item.itemSpells[0].spell.description)
         collector.assertEquals("Passive", item.itemSpells[0].spell.castTime)
-        collector.assertEquals(0, item.itemSpells[0].getnCharges())
+        collector.assertEquals(0, item.itemSpells[0].nCharges)
         collector.assertFalse(item.itemSpells[0].isConsumable)
         collector.assertEquals(0, item.itemSpells[0].categoryId)
         collector.assertEquals("ON_EQUIP", item.itemSpells[0].trigger)

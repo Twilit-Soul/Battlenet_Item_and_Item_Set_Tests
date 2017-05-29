@@ -2,57 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9d64acb-b35b-484d-914b-bbd43eea8556" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Test Plan.docx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_6_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_core_2_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_13_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_1_1_2_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_jre7_1_1_2_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_jre8_1_1_2_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_test_1_1_2_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_test_junit_1_1_2_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/kotlin/com/turlington/battlenetTests/APIAdapter.kt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/kotlin/com/turlington/battlenetTests/APIAdapterTest.kt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/kotlin/com/turlington/battlenetTests/beans/ErrorCollectorUtil.kt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/kotlin/com/turlington/battlenetTests/beans/WoWItemAPITest.kt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/kotlin/com/turlington/battlenetTests/beans/WoWItemSetAPITest.kt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/turlington-battlenet-tests.iml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/description.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/com_google_code_gson_gson_Latest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/junit_junit_Latest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/org_apache_logging_log4j_log4j_core_Latest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/project-template.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Battlenet Item and Item Set Tests.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/gson-2.6.2-javadoc.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/gson-2.6.2-sources.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/gson-2.6.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/hamcrest-core-1.3.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/junit-4.12-javadoc.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/junit-4.12-sources.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/junit-4.12.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/log4j-api-2.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/log4j-core-2.5-javadoc.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/log4j-core-2.5-sources.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/log4j-core-2.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/org.osgi.core-4.3.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/turlington/apiAdapter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/com/turlington/APIAdapterTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/com/turlington/beans/WoWItemAPITest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/com/turlington/beans/WoWItemSetAPITest.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/turlington/Main.java" afterPath="$PROJECT_DIR$/src/main/java/com/turlington/battlenetTests/Main.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/turlington/beans/WoWItem.java" afterPath="$PROJECT_DIR$/src/main/java/com/turlington/battlenetTests/beans/WoWItem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/turlington/beans/WoWItemSet.java" afterPath="$PROJECT_DIR$/src/main/java/com/turlington/battlenetTests/beans/WoWItemSet.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/log4j2.xml" afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/kotlin/com/turlington/battlenetTests/beans/WoWItem.kt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/kotlin/com/turlington/battlenetTests/beans/WoWItemSet.kt" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/turlington/battlenetTests/beans/WoWItem.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/turlington/battlenetTests/beans/WoWItemSet.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/kotlin/com/turlington/battlenetTests/APIAdapterTest.kt" afterPath="$PROJECT_DIR$/src/test/kotlin/com/turlington/battlenetTests/APIAdapterTest.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/kotlin/com/turlington/battlenetTests/beans/WoWItemAPITest.kt" afterPath="$PROJECT_DIR$/src/test/kotlin/com/turlington/battlenetTests/beans/WoWItemAPITest.kt" />
     </list>
     <ignored path="turlington-battlenet-tests.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,7 +41,7 @@
     <favorites_list name="turlington-battlenet-tests" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4508086">
+    <splitter split-orientation="horizontal" split-proportion="0.5808625">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="APIAdapter.kt" pinned="false" current-in-tab="false">
@@ -100,11 +56,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="APIAdapterTest.kt" pinned="false" current-in-tab="true">
+          <file leaf-file-name="APIAdapterTest.kt" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/test/kotlin/com/turlington/battlenetTests/APIAdapterTest.kt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="17">
-                  <caret line="265" column="0" lean-forward="false" selection-start-line="265" selection-start-column="0" selection-end-line="265" selection-end-column="0" />
+                <state relative-caret-position="367">
+                  <caret line="301" column="74" lean-forward="false" selection-start-line="301" selection-start-column="74" selection-end-line="301" selection-end-column="74" />
                   <folding>
                     <element signature="e#39#915#0" expanded="true" />
                   </folding>
@@ -112,11 +68,31 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="WoWItemAPITest.kt" pinned="false" current-in-tab="false">
+          <file leaf-file-name="WoWItem.kt" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/turlington/battlenetTests/beans/WoWItem.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="169">
+                  <caret line="14" column="103" lean-forward="false" selection-start-line="14" selection-start-column="103" selection-end-line="14" selection-end-column="103" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="WoWItemSet.kt" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/turlington/battlenetTests/beans/WoWItemSet.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="85">
+                  <caret line="5" column="65" lean-forward="false" selection-start-line="5" selection-start-column="65" selection-end-line="5" selection-end-column="65" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="WoWItemAPITest.kt" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/test/kotlin/com/turlington/battlenetTests/beans/WoWItemAPITest.kt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
-                  <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="17" selection-end-column="36" />
+                <state relative-caret-position="169">
+                  <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
                   <folding>
                     <element signature="e#45#234#0" expanded="true" />
                   </folding>
@@ -142,8 +118,18 @@
                 <state relative-caret-position="5865">
                   <caret line="353" column="44" lean-forward="false" selection-start-line="353" selection-start-column="44" selection-end-line="353" selection-end-column="44" />
                   <folding>
-                    <element signature="e#15613#15614#0" expanded="true" />
-                    <element signature="e#15675#15676#0" expanded="true" />
+                    <element signature="e#9422#9423#0" expanded="false" />
+                    <element signature="e#9472#9473#0" expanded="false" />
+                    <element signature="e#10277#10278#0" expanded="false" />
+                    <element signature="e#10326#10327#0" expanded="false" />
+                    <element signature="e#10665#10666#0" expanded="false" />
+                    <element signature="e#10715#10716#0" expanded="false" />
+                    <element signature="e#10875#10876#0" expanded="false" />
+                    <element signature="e#10931#10932#0" expanded="false" />
+                    <element signature="e#17853#17854#0" expanded="false" />
+                    <element signature="e#17907#17908#0" expanded="false" />
+                    <element signature="e#18145#18146#0" expanded="false" />
+                    <element signature="e#18198#18199#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -185,29 +171,24 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="WoWItem.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/turlington/battlenetTests/beans/WoWItem.java">
+          <file leaf-file-name="APIAdapter.kt" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/turlington/battlenetTests/APIAdapter.kt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="289">
-                  <caret line="17" column="19" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+                <state relative-caret-position="752">
+                  <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
                   <folding>
-                    <element signature="e#1917#1918#0" expanded="true" />
-                    <element signature="e#1947#1948#0" expanded="true" />
-                    <element signature="e#2030#2031#0" expanded="true" />
-                    <element signature="e#2075#2076#0" expanded="true" />
+                    <element signature="e#39#357#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="WoWItemSet.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/turlington/battlenetTests/beans/WoWItemSet.java">
+          <file leaf-file-name="WoWItem.kt" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/turlington/battlenetTests/beans/WoWItem.kt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="153">
-                  <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-                  <folding>
-                    <element signature="e#156#183#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="255">
+                  <caret line="15" column="79" lean-forward="false" selection-start-line="15" selection-start-column="79" selection-end-line="15" selection-end-column="79" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -235,13 +216,21 @@
       <find>assertEquals</find>
       <find>to</find>
       <find>toLong</find>
-      <find>assertEquals</find>
       <find>assertTrue</find>
+      <find>?</find>
+      <find>val</find>
+      <find>= 0</find>
+      <find>internal</find>
+      <find>? = null</find>
+      <find>= &quot;&quot;</find>
+      <find>= false</find>
+      <find>= ArrayList()</find>
     </findStrings>
     <replaceStrings>
       <replace>collector.assertTrue</replace>
       <replace>toInt</replace>
       <replace>collector.assertEquals</replace>
+      <replace>var</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -275,10 +264,12 @@
         <option value="$PROJECT_DIR$/src/main/kotlin/com/turlington/battlenetTests/APIAdapter.kt" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib/1.1.2-2/kotlin-stdlib-1.1.2-2-sources.jar!/kotlin/util/Preconditions.kt" />
-        <option value="$PROJECT_DIR$/src/test/kotlin/com/turlington/battlenetTests/beans/WoWItemAPITest.kt" />
         <option value="$PROJECT_DIR$/src/test/kotlin/com/turlington/battlenetTests/beans/ErrorCollectorUtil.kt" />
         <option value="$PROJECT_DIR$/src/test/kotlin/com/turlington/battlenetTests/beans/WoWItemSetAPITest.kt" />
         <option value="$PROJECT_DIR$/src/test/kotlin/com/turlington/battlenetTests/APIAdapterTest.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/com/turlington/battlenetTests/beans/WoWItemSet.kt" />
+        <option value="$PROJECT_DIR$/src/test/kotlin/com/turlington/battlenetTests/beans/WoWItemAPITest.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/com/turlington/battlenetTests/beans/WoWItem.kt" />
       </list>
     </option>
   </component>
@@ -404,6 +395,44 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kotlin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="turlington" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="battlenetTests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beans" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Turlington" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Turlington" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -460,7 +489,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="kotlin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -473,6 +502,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="battlenetTests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beans" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -509,17 +542,13 @@
               <option name="myItemId" value="battlenetTests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="beans" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -920,23 +949,31 @@
       <option name="presentableId" value="Default" />
       <updated>1461075034969</updated>
     </task>
+    <task id="LOCAL-00001" summary="initial kotlin conversion. Still need to convert pojos and take a good look over the code for possible improvements.">
+      <created>1496100552158</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1496100552158</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="APIAdapterTest - 2017.05.29 at 16h 13m 58s.xml">
-      <configuration name="APIAdapterTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="APIAdapterTest - 2017.05.29 at 16h 15m 06s.xml">
-      <configuration name="APIAdapterTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="APIAdapterTest - 2017.05.29 at 16h 16m 43s.xml">
-      <configuration name="APIAdapterTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_turlington-battlenet-tests_(2) - 2017.05.29 at 16h 17m 08s.xml">
+    <history-entry file="All_in_turlington-battlenet-tests_(2) - 2017.05.29 at 16h 40m 28s.xml">
       <configuration name="All in turlington-battlenet-tests (2)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WoWItemAPITest - 2017.05.29 at 16h 09m 32s.xml">
-      <configuration name="WoWItemAPITest" configurationId="JUnit" />
+    <history-entry file="All_in_turlington-battlenet-tests_(2) - 2017.05.29 at 16h 55m 13s.xml">
+      <configuration name="All in turlington-battlenet-tests (2)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_turlington-battlenet-tests_(2) - 2017.05.29 at 16h 55m 40s.xml">
+      <configuration name="All in turlington-battlenet-tests (2)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_turlington-battlenet-tests_(2) - 2017.05.29 at 16h 57m 35s.xml">
+      <configuration name="All in turlington-battlenet-tests (2)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_turlington-battlenet-tests_(2) - 2017.05.29 at 16h 57m 49s.xml">
+      <configuration name="All in turlington-battlenet-tests (2)" configurationId="JUnit" />
     </history-entry>
     <history-entry file="WoWItemAPITest - 2017.05.29 at 16h 09m 58s.xml">
       <configuration name="WoWItemAPITest" configurationId="JUnit" />
@@ -959,31 +996,31 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296146" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17748478" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21196754" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20283976" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43407708" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21196754" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20129171" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497309" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3995943" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1020,6 +1057,8 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
+    <MESSAGE value="initial kotlin conversion. Still need to convert pojos and take a good look over the code for possible improvements." />
+    <option name="LAST_COMMIT_MESSAGE" value="initial kotlin conversion. Still need to convert pojos and take a good look over the code for possible improvements." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1067,8 +1106,18 @@
         <state relative-caret-position="6001">
           <caret line="353" column="44" lean-forward="false" selection-start-line="353" selection-start-column="44" selection-end-line="353" selection-end-column="44" />
           <folding>
-            <element signature="e#15613#15614#0" expanded="true" />
-            <element signature="e#15675#15676#0" expanded="true" />
+            <element signature="e#9422#9423#0" expanded="false" />
+            <element signature="e#9472#9473#0" expanded="false" />
+            <element signature="e#10277#10278#0" expanded="false" />
+            <element signature="e#10326#10327#0" expanded="false" />
+            <element signature="e#10665#10666#0" expanded="false" />
+            <element signature="e#10715#10716#0" expanded="false" />
+            <element signature="e#10875#10876#0" expanded="false" />
+            <element signature="e#10931#10932#0" expanded="false" />
+            <element signature="e#17853#17854#0" expanded="false" />
+            <element signature="e#17907#17908#0" expanded="false" />
+            <element signature="e#18145#18146#0" expanded="false" />
+            <element signature="e#18198#18199#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1113,12 +1162,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="19" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
-          <folding>
-            <element signature="e#1917#1918#0" expanded="true" />
-            <element signature="e#1947#1948#0" expanded="true" />
-            <element signature="e#2030#2031#0" expanded="true" />
-            <element signature="e#2075#2076#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1126,9 +1170,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="e#156#183#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1182,8 +1224,18 @@
         <state relative-caret-position="5865">
           <caret line="353" column="44" lean-forward="false" selection-start-line="353" selection-start-column="44" selection-end-line="353" selection-end-column="44" />
           <folding>
-            <element signature="e#15613#15614#0" expanded="true" />
-            <element signature="e#15675#15676#0" expanded="true" />
+            <element signature="e#9422#9423#0" expanded="false" />
+            <element signature="e#9472#9473#0" expanded="false" />
+            <element signature="e#10277#10278#0" expanded="false" />
+            <element signature="e#10326#10327#0" expanded="false" />
+            <element signature="e#10665#10666#0" expanded="false" />
+            <element signature="e#10715#10716#0" expanded="false" />
+            <element signature="e#10875#10876#0" expanded="false" />
+            <element signature="e#10931#10932#0" expanded="false" />
+            <element signature="e#17853#17854#0" expanded="false" />
+            <element signature="e#17907#17908#0" expanded="false" />
+            <element signature="e#18145#18146#0" expanded="false" />
+            <element signature="e#18198#18199#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1198,16 +1250,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/kotlin/com/turlington/battlenetTests/beans/WoWItemAPITest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="17" selection-end-column="36" />
-          <folding>
-            <element signature="e#45#234#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/com/turlington/battlenetTests/beans/WoWItemSetAPITest.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1218,9 +1260,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/turlington/battlenetTests/beans/WoWItemSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="19" column="21" lean-forward="false" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/turlington/battlenetTests/beans/WoWItemSet.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="65" lean-forward="false" selection-start-line="5" selection-start-column="65" selection-end-line="5" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/turlington/battlenetTests/beans/WoWItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="23" lean-forward="false" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/turlington/battlenetTests/APIAdapter.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
+        <state relative-caret-position="752">
           <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
           <folding>
             <element signature="e#39#357#0" expanded="true" />
@@ -1230,34 +1296,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/com/turlington/battlenetTests/APIAdapterTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="265" column="0" lean-forward="false" selection-start-line="265" selection-start-column="0" selection-end-line="265" selection-end-column="0" />
+        <state relative-caret-position="367">
+          <caret line="301" column="74" lean-forward="false" selection-start-line="301" selection-start-column="74" selection-end-line="301" selection-end-column="74" />
           <folding>
             <element signature="e#39#915#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/turlington/battlenetTests/beans/WoWItem.java">
+    <entry file="file://$PROJECT_DIR$/src/test/kotlin/com/turlington/battlenetTests/beans/WoWItemAPITest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="19" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+        <state relative-caret-position="169">
+          <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
           <folding>
-            <element signature="e#1917#1918#0" expanded="true" />
-            <element signature="e#1947#1948#0" expanded="true" />
-            <element signature="e#2030#2031#0" expanded="true" />
-            <element signature="e#2075#2076#0" expanded="true" />
+            <element signature="e#45#234#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/turlington/battlenetTests/beans/WoWItemSet.java">
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/turlington/battlenetTests/beans/WoWItem.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="e#156#183#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="15" column="79" lean-forward="false" selection-start-line="15" selection-start-column="79" selection-end-line="15" selection-end-column="79" />
+          <folding />
         </state>
       </provider>
     </entry>

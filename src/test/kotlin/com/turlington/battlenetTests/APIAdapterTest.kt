@@ -276,7 +276,6 @@ class APIAdapterTest {
             val jsonStrings = ArrayList<String>(APILanguage.values().size)
             APILanguage.values().mapTo(jsonStrings) { adapter.getWoWItemJson(itemId, it) }
 
-
             val wowItems = jsonStrings.stream().map { s -> gson.fromJson(s, WoWItem::class.java) }.toList()
 
             val languageFreeStrings = ArrayList<String>(jsonStrings.size)
