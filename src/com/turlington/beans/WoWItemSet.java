@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * Representation of an item set in WoW.
- * Created by Mitchell on 4/17/2016.
+ * Created by Valerie on 4/17/2016.
  */
 @SuppressWarnings("unused")
 public class WoWItemSet {

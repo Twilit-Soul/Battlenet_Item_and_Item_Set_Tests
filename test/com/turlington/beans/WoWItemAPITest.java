@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Tests for the WoWItem API.
- * Created by Mitchell on 4/14/2016.
+ * Created by Valerie on 4/14/2016.
  */
 public class WoWItemAPITest {
 

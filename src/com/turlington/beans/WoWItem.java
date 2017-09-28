@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * Representation of an item in WoW.
- * Created by Mitchell on 4/14/2016.
+ * Created by Valerie on 4/14/2016.
  */
 @SuppressWarnings("unused")
 public class WoWItem {

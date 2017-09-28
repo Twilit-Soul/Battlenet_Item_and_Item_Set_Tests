@@ -23,7 +23,7 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Should probably test our connection to the API.
- * Created by Mitchell on 4/15/2016.
+ * Created by Valerie on 4/15/2016.
  */
 public class APIAdapterTest {
 

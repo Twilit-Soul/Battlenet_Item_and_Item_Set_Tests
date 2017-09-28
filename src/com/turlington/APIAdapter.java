@@ -18,7 +18,7 @@ import java.util.Optional;
 
 /**
  * Way of accessing the api conveniently.
- * Created by Mitchell on 4/14/2016.
+ * Created by Valerie on 4/14/2016.
  */
 public class APIAdapter {
     private final Gson gson = new Gson(); //This thing is just...nifty, isn't it?
