@@ -2,7 +2,7 @@ package com.turlington.battlenetTests.beans
 
 /**
  * Representation of an item in WoW.
- * Created by Mitchell on 4/14/2016.
+ * Created by Valerie on 4/14/2016.
  */
 data class WoWItem(var id: Int, var disenchantingSkillRank: Int, var stackable: Int, var itemBind: Int,
                    var buyPrice: Int, var itemClass: Int, var itemSubClass: Int, var containerSlots: Int,
@@ -26,7 +26,7 @@ data class Damage(var min: Int, var max: Int, var exactMin: Double, var exactMax
 data class ItemSource(var sourceId: Int, var sourceType: String)
 
 data class BonusSummary(var defaultBonusLists: List<Int>, var chanceBonusLists: List<Int>,
-                        var bonusChances: List<BonusChances>)
+                        var bonusChances: List<BonusChances?>)
 
 data class ItemSpells(var spellId: Int, var nCharges: Int, var categoryId: Int,
                       var isConsumable: Boolean, var trigger: String, var spell: Spell)

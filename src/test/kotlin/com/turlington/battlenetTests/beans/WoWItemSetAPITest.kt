@@ -4,11 +4,10 @@ import com.turlington.battlenetTests.APIAdapter
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.ErrorCollector
-import kotlin.streams.toList
 
 /**
  * Tests for the WoW Item Set API.
- * Created by Mitchell on 4/14/2016.
+ * Created by Valerie on 4/14/2016.
  */
 class WoWItemSetAPITest {
 
@@ -34,9 +33,7 @@ class WoWItemSetAPITest {
         collector.assertEquals(4, itemSet.setBonuses[1].threshold)
         val expected = intArrayOf(76749, 76750, 76751, 76752, 76753)
         collector.assertEquals(expected.size, itemSet.items.size)
-        for (item in expected) {
-            collector.assertTrue(itemSet.items.contains(item))
-        }
+        expected.forEach { collector.assertTrue(itemSet.items.contains(it)) }
     }
 
     /**
@@ -49,11 +46,9 @@ class WoWItemSetAPITest {
         //Already do this part in another test, but still seems wise to have it here, no?
         val itemIds = itemSet.items
         collector.assertEquals(5, itemIds.size)
-        val items = itemIds.stream().map({ id -> adapter.getWoWItem(id)!! }).toList()
+        val items = itemIds.map({ id -> adapter.getWoWItem(id)!! })
 
-        for (item in items) {
-            collector.assertEquals(DEFAULT_ITEM_SET_ID, item.itemSet.id)
-        }
+        items.forEach { collector.assertEquals(DEFAULT_ITEM_SET_ID, it.itemSet.id) }
 
         collector.assertEquals("Deep Earth Handwraps", items[0].name)
         collector.assertEquals("Deep Earth Helm", items[1].name)
@@ -93,7 +88,6 @@ class WoWItemSetAPITest {
 
     @Test
     fun badItemSetId() {
-        val itemSet = adapter.getWoWItemSet(0)
-        collector.assertEquals(null, itemSet)
+        collector.assertEquals(null, adapter.getWoWItemSet(0))
     }
 }

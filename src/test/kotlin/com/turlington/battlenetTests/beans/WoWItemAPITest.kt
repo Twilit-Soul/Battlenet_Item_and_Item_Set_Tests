@@ -10,7 +10,7 @@ import org.junit.rules.ErrorCollector
 
 /**
  * Tests for the WoWItem API.
- * Created by Mitchell on 4/14/2016.
+ * Created by Valerie on 4/14/2016.
  */
 class WoWItemAPITest {
 
@@ -27,9 +27,7 @@ class WoWItemAPITest {
         val DEFAULT_ITEM_ID = 18803
         val item = adapter.getWoWItem(DEFAULT_ITEM_ID)!!
         /*
-            After this massive list of "assertThis" and "assertThat" my sense of
-            "there has got to be a better way than this" is ringing heavily. Hopefully
-            I find it before submitting.
+            A lot of these values could go into a config file, allowing the test to be updated without a code change.
         */
         collector.assertEquals(DEFAULT_ITEM_ID, item.id)
         collector.assertEquals(225, item.disenchantingSkillRank)
@@ -48,17 +46,17 @@ class WoWItemAPITest {
         collector.assertEquals(7, item.bonusStats[3].stat)
         collector.assertEquals(19, item.bonusStats[3].amount)
         collector.assertEquals(0, item.itemSpells.size)
-        collector.assertEquals(474384, item.buyPrice)
+        collector.assertEquals(457008, item.buyPrice)
         collector.assertEquals(2, item.itemClass)
         collector.assertEquals(5, item.itemSubClass)
         collector.assertEquals(0, item.containerSlots)
-        collector.assertEquals(81, item.weaponInfo.damage.min)
-        collector.assertEquals(122, item.weaponInfo.damage.max)
+        collector.assertEquals(110, item.weaponInfo.damage.min)
+        collector.assertEquals(143, item.weaponInfo.damage.max)
         val ACCEPTABLE_FUZZ = 0.01
-        collector.assertEquals(81.0, item.weaponInfo.damage.exactMin, ACCEPTABLE_FUZZ)
-        collector.assertEquals(122.0, item.weaponInfo.damage.exactMax, ACCEPTABLE_FUZZ)
-        collector.assertEquals(2.9, item.weaponInfo.weaponSpeed, ACCEPTABLE_FUZZ)
-        collector.assertEquals(35.0, item.weaponInfo.dps, ACCEPTABLE_FUZZ)
+        collector.assertEquals(110.0, item.weaponInfo.damage.exactMin, ACCEPTABLE_FUZZ)
+        collector.assertEquals(143.0, item.weaponInfo.damage.exactMax, ACCEPTABLE_FUZZ)
+        collector.assertEquals(3.6, item.weaponInfo.weaponSpeed, ACCEPTABLE_FUZZ)
+        collector.assertEquals(35.13889, item.weaponInfo.dps, ACCEPTABLE_FUZZ)
         collector.assertEquals(17, item.inventoryType)
         collector.assertTrue(item.equippable)
         collector.assertEquals(70, item.itemLevel)
@@ -67,7 +65,7 @@ class WoWItemAPITest {
         collector.assertEquals(0, item.minFactionId)
         collector.assertEquals(0, item.minReputation)
         collector.assertEquals(4, item.quality)
-        collector.assertEquals(94876, item.sellPrice)
+        collector.assertEquals(91401, item.sellPrice)
         collector.assertEquals(0, item.requiredSkill)
         collector.assertEquals(60, item.requiredLevel)
         collector.assertEquals(0, item.requiredSkillRank)
@@ -109,8 +107,19 @@ class WoWItemAPITest {
         collector.assertEquals(109857, item.itemSpells[0].spell.id)
         collector.assertEquals("Item - Dragon Soul - Proc - Agi Ranged Gun LFR", item.itemSpells[0].spell.name)
         collector.assertEquals("spell_holy_avenginewrath", item.itemSpells[0].spell.icon)
-        //TODO: could replace numbers with regex match
-        collector.assertEquals("Your ranged attacks have a chance to deal ^8.5370 fire damage over 2 sec.", item.itemSpells[0].spell.description)
+        val spellDescription = item.itemSpells[0].spell.description
+        collector.assertEquals("Your ranged attacks have a chance to deal ", spellDescription.substringBefore("^"))
+        val matcher = "[^\\d]*(\\d+\\.?\\d*).*".toPattern().matcher(spellDescription)
+        if (matcher.matches()) {
+            try {
+                collector.assertEquals(8.13, matcher.group(1).toDouble())
+            } catch (e: Throwable) {
+                collector.addError(e)
+            }
+        } else {
+            collector.assertTrue("Regex did not match description: $spellDescription", false)
+        }
+        collector.assertEquals(" fire damage over 2 sec.", spellDescription.substring(spellDescription.indexOf(" fire")))
         collector.assertEquals("Passive", item.itemSpells[0].spell.castTime)
         collector.assertEquals(0, item.itemSpells[0].nCharges)
         collector.assertFalse(item.itemSpells[0].isConsumable)
@@ -157,23 +166,29 @@ class WoWItemAPITest {
         collector.assertEquals(198, item.bonusSummary.chanceBonusLists[106]) //Middle-Ish
         collector.assertEquals(42, item.bonusSummary.chanceBonusLists[129]) //End
         collector.assertEquals(9, item.bonusSummary.bonusChances.size)
-        collector.assertEquals("UPGRADE", item.bonusSummary.bonusChances[0].chanceType)
-        collector.assertEquals("NAME_SUFFIX", item.bonusSummary.bonusChances[0].upgrade.upgradeType)
-        collector.assertEquals("of the Fireflash", item.bonusSummary.bonusChances[0].upgrade.name)
-        collector.assertEquals(13150, item.bonusSummary.bonusChances[0].upgrade.id)
-        collector.assertEquals(2, item.bonusSummary.bonusChances[0].stats.size)
-        collector.assertEquals("32", item.bonusSummary.bonusChances[0].stats[0].statId)
-        collector.assertEquals(76, item.bonusSummary.bonusChances[0].stats[0].delta)
-        collector.assertEquals(114, item.bonusSummary.bonusChances[0].stats[0].maxDelta)
-        collector.assertEquals("36", item.bonusSummary.bonusChances[0].stats[1].statId)
-        collector.assertEquals(76, item.bonusSummary.bonusChances[0].stats[1].delta)
-        collector.assertEquals(114, item.bonusSummary.bonusChances[0].stats[1].maxDelta)
-        collector.assertEquals(0, item.bonusSummary.bonusChances[0].sockets.size)
-        collector.assertEquals("SOCKET", item.bonusSummary.bonusChances[8].chanceType)
-        collector.assertEquals(0, item.bonusSummary.bonusChances[8].stats.size)
-        collector.assertEquals(1, item.bonusSummary.bonusChances[8].sockets.size)
-        collector.assertEquals("PRISMATIC", item.bonusSummary.bonusChances[8].sockets[0].socketType)
+        collector.assertEquals("UPGRADE", item.bonusSummary.bonusChances[0]?.chanceType)
+        collector.assertEquals("NAME_SUFFIX", item.bonusSummary.bonusChances[0]?.upgrade?.upgradeType)
+        collector.assertEquals("of the Fireflash", item.bonusSummary.bonusChances[0]?.upgrade?.name)
+        collector.assertEquals(13150, item.bonusSummary.bonusChances[0]?.upgrade?.id)
+        collector.assertEquals(2, item.bonusSummary.bonusChances[0]?.stats?.size)
+        collector.assertEquals("32", item.bonusSummary.bonusChances[0]?.stats[0]?.statId)
+        collector.assertEquals(76, item.bonusSummary.bonusChances[0]?.stats[0]?.delta)
+        collector.assertEquals(114, item.bonusSummary.bonusChances[0]?.stats[0]?.maxDelta)
+        collector.assertEquals("36", item.bonusSummary.bonusChances[0]?.stats[1]?.statId)
+        collector.assertEquals(76, item.bonusSummary.bonusChances[0]?.stats[1]?.delta)
+        collector.assertEquals(114, item.bonusSummary.bonusChances[0]?.stats[1]?.maxDelta)
+        collector.assertEquals(0, item.bonusSummary.bonusChances[0]?.sockets?.size)
+        collector.assertEquals("SOCKET", item.bonusSummary.bonusChances[8]?.chanceType)
+        collector.assertEquals(0, item.bonusSummary.bonusChances[8]?.stats?.size)
+        collector.assertEquals(1, item.bonusSummary.bonusChances[8]?.sockets?.size)
+        collector.assertEquals("PRISMATIC", item.bonusSummary.bonusChances[8]?.sockets[0]?.socketType)
     }
+
+    /**
+     * Kotlin doesn't want me to use their convenient get operator on a nullable list.
+     * ...I want to use the convenient get operator on a nullable list.
+     */
+    private operator fun <T> List<T?>?.get(index: Int) = this?.get(index)
 
     @Test
     fun testItemSet() {
@@ -192,9 +207,7 @@ class WoWItemAPITest {
         collector.assertEquals(4, item.itemSet.setBonuses[1].threshold)
         val expected = intArrayOf(76749, 76750, 76751, 76752, 76753)
         collector.assertEquals(expected.size, item.itemSet.items.size)
-        for (itemInSet in expected) {
-            collector.assertTrue(item.itemSet.items.contains(itemInSet))
-        }
+        expected.forEach { collector.assertTrue(item.itemSet.items.contains(it)) }
 
         val itemSetOptional = adapter.getWoWItemSet(item.itemSet.id)!!
         collector.assertEquals(DEEP_EARTH_VESTMENTS_ID, itemSetOptional.id)
@@ -226,13 +239,8 @@ class WoWItemAPITest {
         collector.assertEquals("Draga de lava de Finkle", item.name)
     }
 
-    /**
-     * Here a potential disadvantage of my Optional approach is revealed.
-     * We can't test for specific exceptions here.
-     */
     @Test
     fun badItemID() {
-        val item = adapter.getWoWItem(0)
-        collector.assertEquals(null, item)
+        collector.assertEquals(null, adapter.getWoWItem(0))
     }
 }

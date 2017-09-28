@@ -12,11 +12,9 @@ import java.util.*
 
 /**
  * Way of accessing the api conveniently.
- * Created by Mitchell on 4/14/2016.
+ * Created by Valerie on 4/14/2016.
  */
 class APIAdapter {
-    private val gson = Gson() //This thing is just...nifty, isn't it?
-    private val logger = LogManager.getLogger(APIAdapter::class.java)
 
     /*
         I'm a fan of type safety.
@@ -30,37 +28,33 @@ class APIAdapter {
     /**
      * (If you want to specify the language.)
      */
-    fun getWoWItemSet(setId: Int, language: APILanguage = APILanguage.ENGLISH): WoWItemSet? {
-        try {
-            return gson.fromJson(getWoWItemSetJson(setId, language), WoWItemSet::class.java)
-        } catch (e: Exception) {
-            logger.warn("Couldn't get WoWItemSet for id $setId: ${e.message}")
-        }
-        return null
+    fun getWoWItemSet(setId: Int, language: APILanguage = APILanguage.ENGLISH) = try {
+        gson.fromJson(getWoWItemSetJson(setId, language), WoWItemSet::class.java)
+    } catch (e: Exception) {
+        logger.warn("Couldn't get WoWItemSet for id $setId: ${e.message}")
+        null
     }
 
-    fun getWoWItem(itemId: Int, language: APILanguage = APILanguage.ENGLISH): WoWItem? {
-        try {
-            return gson.fromJson(getWoWItemJson(itemId, language), WoWItem::class.java)
-        } catch (e: Exception) {
-            logger.warn("Couldn't get WoWItem for id $itemId: ${e.message}")
-        }
-        return null
+    fun getWoWItem(itemId: Int, language: APILanguage = APILanguage.ENGLISH) = try {
+        gson.fromJson(getWoWItemJson(itemId, language), WoWItem::class.java)
+    } catch (e: Exception) {
+        logger.warn("Couldn't get WoWItem for id $itemId: ${e.message}")
+        null
     }
 
-    //TODO: this should take an enum or something, not a class
+    //TODO: this should take an enum or something maybe, not a class
     private fun getItemOrSet(id: Int, language: APILanguage = APILanguage.ENGLISH, clazz: Class<*>): String? {
         val key = id.toString() + language.code
-        when (clazz) {
+        return when (clazz) {
             WoWItem::class.java -> {
                 cachedItemJsons.putIfAbsent(key, callURL(getWoWItemURL(id, language)))
-                return cachedItemJsons[key]!!
+                cachedItemJsons[key]!!
             }
             WoWItemSet::class.java -> {
                 cachedItemSetJsons.putIfAbsent(key, callURL(getWoWItemSetURL(id, language)))
-                return cachedItemSetJsons[key]!!
+                cachedItemSetJsons[key]!!
             }
-            else -> return null
+            else -> null
         }
     }
 
@@ -92,8 +86,7 @@ class APIAdapter {
     internal fun callURL(myURL: String): String {
         val sb = StringBuilder()
         val urlConn = URL(myURL).openConnection()
-        InputStreamReader(urlConn.getInputStream(),
-                StandardCharsets.UTF_8).use { inStream ->
+        InputStreamReader(urlConn.getInputStream(), StandardCharsets.UTF_8).use { inStream ->
             BufferedReader(inStream).use { bufferedReader ->
                 urlConn.readTimeout = 60 * 1000
                 if (urlConn.getInputStream() != null) {
@@ -105,7 +98,6 @@ class APIAdapter {
                 }
             }
         }
-
         return sb.toString()
     }
 
@@ -135,5 +127,7 @@ class APIAdapter {
 
         private val cachedItemJsons = HashMap<String, String>()
         private val cachedItemSetJsons = HashMap<String, String>()
+        private val gson = Gson()
+        private val logger = LogManager.getLogger(APIAdapter::class.java)
     }
 }

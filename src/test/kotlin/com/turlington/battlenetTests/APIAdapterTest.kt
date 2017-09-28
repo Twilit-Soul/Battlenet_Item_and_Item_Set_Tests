@@ -18,11 +18,10 @@ import java.io.FileNotFoundException
 import java.io.IOException
 import java.util.*
 import java.util.regex.Pattern
-import kotlin.streams.toList
 
 /**
  * Should probably test our connection to the API.
- * Created by Mitchell on 4/15/2016.
+ * Created by Valerie on 4/15/2016.
  */
 class APIAdapterTest {
 
@@ -32,7 +31,7 @@ class APIAdapterTest {
     private val DEFAULT_ITEM_SET_ID = 1060
     private val adapter = APIAdapter()
     private val gson = Gson()
-    private val tester = JsonLanguageIndependenceTester()
+    private val tester = JsonLanguageIndependenceTester(gson)
 
     /*
         I don't know if you will frown at me or smile at me for insisting on using my language enum and APIAdapter
@@ -180,7 +179,6 @@ class APIAdapterTest {
     }
 
     @Test
-    @Throws(IOException::class)
     fun testMissingLanguage() {
         //No language input? Also English.
         val badLanguage = adapter.callURL("$ITEM_API_START$DEFAULT_ITEM_ID?$API_KEY_START$API_KEY")
@@ -198,7 +196,6 @@ class APIAdapterTest {
                     "$DEFAULT_ITEM_ID$LOCALE_START${APILanguage.ENGLISH.code}$API_KEY_START$BAD_KEY"
             collector.assertEquals(expectedErrorMessage, e.message)
         }
-
     }
 
     @Test
@@ -211,7 +208,6 @@ class APIAdapterTest {
                     "$DEFAULT_ITEM_SET_ID$LOCALE_START${APILanguage.ENGLISH.code}$API_KEY_START$BAD_KEY"
             collector.assertEquals(expectedErrorMessage, e.message)
         }
-
     }
 
     @Test
@@ -245,8 +241,7 @@ class APIAdapterTest {
      *
      * (Don't know how you guys feel about inner classes such as this)
      */
-    private inner class JsonLanguageIndependenceTester {
-
+    private inner class JsonLanguageIndependenceTester(private val gson: Gson) {
         /**
          * Strips out anything language-related, and makes sure what's left between items is identical.
          */
@@ -254,19 +249,20 @@ class APIAdapterTest {
             val jsonStrings = ArrayList<String>(APILanguage.values().size)
             APILanguage.values().mapTo(jsonStrings) { adapter.getWoWItemSetJson(itemSetId, it) }
 
-            val wowItems = jsonStrings.stream().map { s -> gson.fromJson(s, WoWItemSet::class.java) }.toList()
+            val wowItemSets = jsonStrings.map { s -> gson.fromJson(s, WoWItemSet::class.java) }
 
             val languageFreeStrings = ArrayList<String>(jsonStrings.size)
-            jsonStrings.indices.mapTo(languageFreeStrings) { removeLanguageFromItemSetJson(jsonStrings[it], wowItems[it]) }
+            jsonStrings.indices.mapTo(languageFreeStrings) { removeLanguageFromItemSetJson(jsonStrings[it], wowItemSets[it]) }
 
-            for (i in 1..languageFreeStrings.size - 1) {
+            for (i in 1 until languageFreeStrings.size) {
                 collector.assertEquals(languageFreeStrings[0], languageFreeStrings[i])
             }
         }
 
         /*
-            Code between these two methods seems kinda duplicated...but there are key lines where
-            different methods are called. Not sure of an easy way to generalize that.
+            Code between these two methods is mostly duplicated, and could be abstracted out with some fancy
+            generics and higher-order functions. It would sacrifice too much readability to be worth it though,
+            I think.
          */
 
         /**
@@ -276,12 +272,12 @@ class APIAdapterTest {
             val jsonStrings = ArrayList<String>(APILanguage.values().size)
             APILanguage.values().mapTo(jsonStrings) { adapter.getWoWItemJson(itemId, it) }
 
-            val wowItems = jsonStrings.stream().map { s -> gson.fromJson(s, WoWItem::class.java) }.toList()
+            val wowItems = jsonStrings.map { s -> gson.fromJson(s, WoWItem::class.java) }
 
             val languageFreeStrings = ArrayList<String>(jsonStrings.size)
             jsonStrings.indices.mapTo(languageFreeStrings) { removeLanguageFromItemJson(jsonStrings[it], wowItems[it]) }
 
-            for (i in 1..languageFreeStrings.size - 1) {
+            for (i in 1 until languageFreeStrings.size) {
                 collector.assertEquals(languageFreeStrings[0], languageFreeStrings[i])
             }
         }
@@ -290,16 +286,13 @@ class APIAdapterTest {
          * Removes any language-specific text from a json string for a WoW item.
          */
         private fun removeLanguageFromItemJson(json: String, item: WoWItem): String {
-            var changed = json
-            changed = removeWords(changed, item.name)
+            var changed = json.removeWords(item.name)
             item.itemSpells
-                    .asSequence()
                     .map { it.spell }
-                    .forEach { changed = removeWords(changed, it.name, it.castTime, it.description) }
+                    .forEach { changed = changed.removeWords(it.name, it.castTime, it.description) }
             item.bonusSummary.bonusChances
-                    .asSequence()
-                    .filter { it.upgrade != null }
-                    .forEach { changed = removeWords(changed, it.upgrade.name) }
+                    .filter { it?.upgrade?.name != null }
+                    .forEach { changed = changed.removeWords(it!!.upgrade.name) }
             return changed
         }
 
@@ -307,19 +300,16 @@ class APIAdapterTest {
          * Removes any language-specific text from a json string for a WoW item set.
          */
         private fun removeLanguageFromItemSetJson(json: String, itemSet: WoWItemSet): String {
-            var changed = json
-            changed = removeWords(changed, itemSet.name)
-            for (setBonuses in itemSet.setBonuses) {
-                changed = removeWords(changed, setBonuses.description)
-            }
+            var changed = json.removeWords(itemSet.name)
+            itemSet.setBonuses.forEach { changed = changed.removeWords(it.description) }
             return changed
         }
 
         /**
          * Just a convenient way to remove lots of text.
          */
-        private fun removeWords(original: String, vararg toRemove: String): String {
-            var changed = original
+        private fun String.removeWords(vararg toRemove: String): String {
+            var changed = this
             for (string in toRemove) {
                 changed = changed.replaceFirst(Pattern.quote(string.replace("\n", "\\n")).toRegex(), "")
             }
