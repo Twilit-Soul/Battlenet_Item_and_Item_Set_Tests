@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="org.apache.logging.log4j:log4j-core:Latest" type="repository">
+    <properties maven-id="org.apache.logging.log4j:log4j-core:LATEST" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/log4j-core-2.10.1-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/log4j-api-2.10.1-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/log4j-core-2.10.1-SNAPSHOT-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/log4j-api-2.10.1-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -287,8 +287,9 @@ class APIAdapterTest {
          */
         private fun removeLanguageFromItemJson(json: String, item: WoWItem): String {
             var changed = json.removeWords(item.name)
+            @Suppress("UselessCallOnCollection") //It actually is necessary though. IDE is wrong.
             item.itemSpells
-                    .map { it.spell }
+                    .mapNotNull { it.spell }
                     .forEach { changed = changed.removeWords(it.name, it.castTime, it.description) }
             item.bonusSummary.bonusChances
                     .filter { it?.upgrade?.name != null }

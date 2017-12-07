@@ -31,7 +31,7 @@ class APIAdapter {
     fun getWoWItemSet(setId: Int, language: APILanguage = APILanguage.ENGLISH) = try {
         gson.fromJson(getWoWItemSetJson(setId, language), WoWItemSet::class.java)
     } catch (e: Exception) {
-        logger.warn("Couldn't get WoWItemSet for id $setId: ${e.message}")
+        logger.warn("Couldn't get WoWItemSet for id $setId: ${e.message}") //Could log stack trace but probably overkill for this.
         null
     }
 
@@ -42,10 +42,9 @@ class APIAdapter {
         null
     }
 
-    //TODO: this should take an enum or something maybe, not a class
-    private fun getItemOrSet(id: Int, language: APILanguage = APILanguage.ENGLISH, clazz: Class<*>): String? {
+    private inline fun <reified T> getItemOrSet(id: Int, language: APILanguage = APILanguage.ENGLISH): String? {
         val key = id.toString() + language.code
-        return when (clazz) {
+        return when (T::class.java) {
             WoWItem::class.java -> {
                 cachedItemJsons.putIfAbsent(key, callURL(getWoWItemURL(id, language)))
                 cachedItemJsons[key]!!
@@ -58,27 +57,19 @@ class APIAdapter {
         }
     }
 
-    fun getWoWItemJson(id: Int, language: APILanguage = APILanguage.ENGLISH): String {
-        return getItemOrSet(id, language, WoWItem::class.java)!!
-    }
+    fun getWoWItemJson(id: Int, language: APILanguage = APILanguage.ENGLISH) = getItemOrSet<WoWItem>(id, language)!!
 
-    fun getWoWItemSetJson(id: Int, language: APILanguage = APILanguage.ENGLISH): String {
-        return getItemOrSet(id, language, WoWItemSet::class.java)!!
-    }
+    fun getWoWItemSetJson(id: Int, language: APILanguage = APILanguage.ENGLISH) = getItemOrSet<WoWItemSet>(id, language)!!
 
     /**
      * Uses id to try and retrieve an item set from the battle.net API. Can specify language, and add jsonp.
      */
-    internal fun getWoWItemSetJsonp(setId: Int, jsonp: String): String {
-        return callURL(getWoWItemSetURL(setId, jsonp = jsonp))
-    }
+    internal fun getWoWItemSetJsonp(setId: Int, jsonp: String) = callURL(getWoWItemSetURL(setId, jsonp = jsonp))
 
     /**
      * Uses id to try and retrieve an item from the battle.net API. Can specify language, and add jsonp.
      */
-    internal fun getWoWItemJsonp(itemId: Int, jsonp: String): String {
-        return callURL(getWoWItemURL(itemId, jsonp = jsonp))
-    }
+    internal fun getWoWItemJsonp(itemId: Int, jsonp: String) = callURL(getWoWItemURL(itemId, jsonp = jsonp))
 
     /**
      * Sends the passed in request, and returns whatever the response is, hopefully.

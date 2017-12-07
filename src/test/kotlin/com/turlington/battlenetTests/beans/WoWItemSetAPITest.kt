@@ -12,7 +12,7 @@ import org.junit.rules.ErrorCollector
 class WoWItemSetAPITest {
 
     @get:Rule
-    val collector = ErrorCollector()
+    private val collector = ErrorCollector()
     private val adapter = APIAdapter()
     private val DEFAULT_ITEM_SET_ID = 1060
 
@@ -46,7 +46,7 @@ class WoWItemSetAPITest {
         //Already do this part in another test, but still seems wise to have it here, no?
         val itemIds = itemSet.items
         collector.assertEquals(5, itemIds.size)
-        val items = itemIds.map({ id -> adapter.getWoWItem(id)!! })
+        val items = itemIds.map { id -> adapter.getWoWItem(id)!! }
 
         items.forEach { collector.assertEquals(DEFAULT_ITEM_SET_ID, it.itemSet.id) }
 
