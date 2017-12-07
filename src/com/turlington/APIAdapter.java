@@ -56,7 +56,7 @@ public class APIAdapter {
         The optionals might be unnecessary. In fact, the exception caused by failure might be more
         desirable to see. This seems like a place I'd find my workplace's standard and adhere to it.
 
-        "But which do you think is better, Mitch?"
+        "But which do you think is better, Val?"
 
         I think the exception could be useful indeed, but at least this way a test can continue on
         in case of multiple back-to-back failures, and it could report exactly which parts of a
